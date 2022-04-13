@@ -1,0 +1,30 @@
+- name Deploy web app
+  hosts: lin 
+  become: yes
+  tasks:
+   - name: Install dependencies
+     apt:
+      name:
+        - python
+        - python-setuptpp;s
+        - python-dev
+        - build-essential
+        - python3-pip
+      state: present
+      
+   - name: Install MYSQL DB
+     apt:
+      name:
+        - mysql-server
+        - mysql-client 
+      
+   - name: Start DB
+     service:
+       name: mysql
+       state: started
+       enabled: yes
+       
+    - name: Flask server
+      pip:
+        name: flask, flask-mysql
+        
