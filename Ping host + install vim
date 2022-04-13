@@ -1,0 +1,11 @@
+- name: Ping servers
+  hosts: lin
+  become: yes
+  tasks:
+   - name: Try ping
+     ping:
+   
+   - name: Install vim
+     apt:
+       name: vim
+       state:present
